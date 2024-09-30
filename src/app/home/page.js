@@ -1,59 +1,71 @@
 import React from 'react';
+import {
+  Box,
+  Typography,
+  Button,
+  Paper,
+} from '@mui/material';
 
 function Home() {
   return (
-    <div className="min-h-screen bg-gray-200">
-      <div className="bg-white-400 p-4 flex justify-between items-center">       
-        <div className="text-black font-extrabold text-4xl ml-8">
-          <span className="text-blue-500">C</span>
-          <span className="text-blue-500">u</span>
-          <span className="text-blue-500">s</span>
-          <span className="text-yellow-500">t</span>
-          <span className="text-blue-500">M</span>
-          <span className="text-yellow-500">e</span>
-        </div>
-        <div className="flex justify-end items-center">
-          <div className="text-black font-semibold mr-4">Home</div>
-          <div className="text-black font-semibold">About</div>
-          <div className="text-black font-semibold ml-4">Services</div>
-          <a href="home/register">
-            <button className="bg-yellow-500 rounded text-white ml-8 font-semibold px-5 py-2">
+    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+      <Box
+        sx={{
+          backgroundColor: '#ffffff',
+          padding: 2,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', ml: 2 }}>
+          <span style={{ color: '#1976d2' }}>C</span>
+          <span style={{ color: '#1976d2' }}>u</span>
+          <span style={{ color: '#1976d2' }}>s</span>
+          <span style={{ color: '#ffeb3b' }}>t</span>
+          <span style={{ color: '#1976d2' }}>M</span>
+          <span style={{ color: '#ffeb3b' }}>e</span>
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="body1" sx={{ fontWeight: 'medium', mr: 2 }}>Home</Typography>
+          <Typography variant="body1" sx={{ fontWeight: 'medium', mr: 2 }}>About</Typography>
+          <Typography variant="body1" sx={{ fontWeight: 'medium', mr: 2 }}>Services</Typography>
+          <Button variant="contained" color="primary" href="home/register" sx={{ ml: 2 }}>
             Sign In
-            </button>
-          </a>
-          
-        </div>
-      </div>
+          </Button>
+        </Box>
+      </Box>
 
-      <div className="flex justify-center mt-16">
-        <div className="bg-white-400 w-96 h-80 p-8 flex flex-col items-center justify-center">
-          <div className="text-black font-bold text-xl">Personalize your world with</div>
-          <div className="text-black font-bold mt-1 text-xl">CusTMe</div>
-          <div className="text-black font-normal mt-1 text-xl text-center">
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <Paper sx={{ padding: 4, width: 400, height: 320, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+            Personalize your world with
+          </Typography>
+          <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', mt: 1 }}>
+            CusTMe
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'center', mt: 1 }}>
             Connect Designers and Printing providers
-          </div>
-          <div className="flex space-x-6 mt-7">
-            <a href="home/register">
-              <button className="bg-yellow-500 rounded text-black font-semibold px-5 py-2 -mr-4">
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+            <Button variant="contained" sx={{ backgroundColor: '#ffeb3b', color: '#000', mr: 2 }}>
               Sign Up
-              </button>
-            </a>
-            
-            <button className="bg-white rounded text-black font-semibold px-5 py-2 border border-black">
+            </Button>
+            <Button variant="outlined" sx={{ backgroundColor: '#ffffff', color: '#000' }}>
               Join
-            </button>
-          </div>
-        </div>
+            </Button>
+          </Box>
+        </Paper>
 
-        <div className="w-96 h-80 ml-3">
+        <Box sx={{ width: 400, height: 320, ml: 3 }}>
           <img
             src="/assets/image/artcat.jpg"
             alt="Your Image"
-            className="w-full h-full"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
           />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

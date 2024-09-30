@@ -1,194 +1,340 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Avatar,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  TextField,
+  Button,
+  Grid,
+  Paper,
+  Box,
+  IconButton as MuiIconButton,
+} from "@mui/material";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ChatIcon from "@mui/icons-material/Chat";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import PrintIcon from "@mui/icons-material/Print";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+
+const items = [
+  { src: "/assets/image/artist1.jpg", title: "Item 1", subtitle: "Zelma Diana" },
+  { src: "/assets/image/artist2.jpg", title: "Item 2", subtitle: "Perrine Gerda" },
+  { src: "/assets/image/artist3.jpg", title: "Item 3", subtitle: "Perrine Gerda" },
+  { src: "/assets/image/artist4.jpg", title: "Item 4", subtitle: "Artist Name" },
+  { src: "/assets/image/artist5.jpg", title: "Item 5", subtitle: "Artist Name" },
+];
+
+const printingShops = [
+  { src: "/assets/image/print1.jpg", title: "Shop 1", subtitle: "Print Master" },
+  { src: "/assets/image/print2.jpg", title: "Shop 2", subtitle: "Quick Print" },
+  { src: "/assets/image/print3.jpg", title: "Shop 3", subtitle: "Design & Print" },
+  { src: "/assets/image/print4.jpg", title: "Shop 4", subtitle: "Print Hub" },
+  { src: "/assets/image/print5  .jpg", title: "Shop 5", subtitle: "Creative Prints" },
+];
+
+function SelectionCarousel({ items, handleNext, handlePrevious, currentIndex }) {
+  const visibleItems = items.slice(currentIndex, currentIndex + 3);
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: "-40px",
+        marginRight: "50px",
+      }}
+    >
+      <IconButton onClick={handlePrevious} aria-label="previous" sx={{ mr: 1 }}>
+        <ArrowBackIcon />
+      </IconButton>
+
+      <Box sx={{ flex: 1, overflow: "hidden" }}>
+        <Grid container spacing={2}>
+          {visibleItems.map((item, index) => (
+            <Grid item xs={4} sm={4} key={index}>
+              <Paper sx={{ p: 2, boxShadow: 3, textAlign: "center" }}>
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                  }}
+                />
+                <Typography variant="subtitle1" fontWeight="bold" mt={1}>
+                  {item.title}
+                </Typography>
+                <Typography variant="body2">{item.subtitle}</Typography>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
+      <IconButton onClick={handleNext} aria-label="next" sx={{ ml: 1 }}>
+        <ArrowForwardIcon />
+      </IconButton>
+    </Box>
+  );
+}
+
+function Timeline() {
+  return (
+    <Box>
+      <Typography variant="h6" fontWeight="bold" mb={2} color="black">
+        Your Post
+      </Typography>
+  
+      <Paper sx={{ p: 1, mb: 2, boxShadow: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+          <Avatar alt="User Profile" src="/assets/image/artcat.jpg" sx={{ mr: 2 }} />
+          <Box sx={{ ml: "auto" }}>
+            <MuiIconButton sx={{ color: "green" }}>
+              <EditIcon />
+            </MuiIconButton>
+            <MuiIconButton sx={{ color: "red" }}>
+              <DeleteIcon />
+            </MuiIconButton>
+          </Box>
+        </Box>
+        <Typography variant="body2">
+          Looking for a designer to create custom artwork for my new website. Interested designers, please share your portfolio and availability.
+        </Typography>
+      </Paper>
+
+      <Paper sx={{ p: 2, mb: 2, boxShadow: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+          <Avatar alt="User Profile" src="/assets/image/artcat.jpg" sx={{ mr: 2 }} />
+          <Box sx={{ ml: "auto" }}>
+            <MuiIconButton sx={{ color: "green" }}>
+              <EditIcon />
+            </MuiIconButton>
+            <MuiIconButton sx={{ color: "red" }}>
+              <DeleteIcon />
+            </MuiIconButton>
+          </Box>
+        </Box>
+        <Typography variant="body2">
+          I need a custom T-shirt design for our upcoming family reunion. Interested designers, please message me with your ideas and portfolio.
+        </Typography>
+      </Paper>
+
+      <Paper sx={{ p: 2, mb: 2, boxShadow: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+          <Avatar alt="User Profile" src="/assets/image/artcat.jpg" sx={{ mr: 2 }} />
+          <Box sx={{ ml: "auto" }}>
+            <MuiIconButton sx={{ color: "green" }}>
+              <EditIcon />
+            </MuiIconButton>
+            <MuiIconButton sx={{ color: "red" }}>
+              <DeleteIcon />
+            </MuiIconButton>
+          </Box>
+        </Box>
+        <Typography variant="body2">
+          Seeking a creative designer to develop a vibrant and eye-catching flyer for a community event. Contact me if you have relevant experience.
+        </Typography>
+      </Paper>
+
+      <Paper sx={{ p: 2, mb: 2, boxShadow: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+          <Avatar alt="User Profile" src="/assets/image/artcat.jpg" sx={{ mr: 2 }} />
+          <Box sx={{ ml: "auto" }}>
+            <MuiIconButton sx={{ color: "green" }}>
+              <EditIcon />
+            </MuiIconButton>
+            <MuiIconButton sx={{ color: "red" }}>
+              <DeleteIcon />
+            </MuiIconButton>
+          </Box>
+        </Box>
+        <Typography variant="body2">
+          Need a professional business card design that stands out. Please get in touch if you can provide a modern and sleek design.
+        </Typography>
+      </Paper>
+    </Box>
+  );
+}
 
 function Home() {
+  const [artistIndex, setArtistIndex] = useState(0);
+  const [shopIndex, setShopIndex] = useState(0);
+
+  const handleArtistPrevious = () => {
+    setArtistIndex((prevIndex) =>
+      prevIndex === 0 ? items.length - 3 : prevIndex - 3
+    );
+  };
+
+  const handleArtistNext = () => {
+    setArtistIndex((prevIndex) =>
+      prevIndex + 3 >= items.length ? 0 : prevIndex + 3
+    );
+  };
+
+  const handleShopPrevious = () => {
+    setShopIndex((prevIndex) =>
+      prevIndex === 0 ? printingShops.length - 3 : prevIndex - 3
+    );
+  };
+
+  const handleShopNext = () => {
+    setShopIndex((prevIndex) =>
+      prevIndex + 3 >= printingShops.length ? 0 : prevIndex + 3
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-gray-200 flex">
+    <Box sx={{ display: "flex" }}>
+      <AppBar position="fixed" sx={{ zIndex: 1201, backgroundColor: "#7ab6ff" }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography
+            variant="h4"
+            component="div"
+            sx={{ fontWeight: "bold", color: "black" }}
+          >
+            <span style={{ color: "#FFEB3B" }}>Cus</span>
+            <span style={{ color: "#FFEB3B" }}>tMe</span>
+          </Typography>
 
-      <div className="bg-white p-4 flex justify-between items-center shadow-md fixed top-0 left-0 right-0 z-50">
-        <div className="text-black font-extrabold text-4xl ml-8">
-          <span className="text-blue-500">C</span>
-          <span className="text-blue-500">u</span>
-          <span className="text-blue-500">s</span>
-          <span className="text-yellow-500">t</span>
-          <span className="text-blue-500">M</span>
-          <span className="text-yellow-500">e</span>
-        </div>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <IconButton color="inherit">
+              <NotificationsIcon />
+            </IconButton>
+            <Avatar alt="Profile" src="/assets/image/artcat.jpg" />
+          </Box>
+        </Toolbar>
+      </AppBar>
 
-        <div className="flex items-center space-x-4">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-black"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.97 7 11v3.159c0 .538-.214 1.055-.595 1.436L5 17h10z"
+      <Drawer
+        variant="permanent"
+        sx={{
+          width: 200,
+          [`& .MuiDrawer-paper`]: {
+            width: 200,
+            boxSizing: "border-box",
+            backgroundColor: "#1E88E5",
+            color: "white",
+          },
+        }}
+      >
+        <Toolbar />
+        <List>
+          <ListItem button>
+            <ListItemIcon sx={{ color: "white" }}>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" sx={{ color: "white" }} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon sx={{ color: "white" }}>
+              <ChatIcon />
+            </ListItemIcon>
+            <ListItemText primary="Chat" sx={{ color: "white" }} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon sx={{ color: "white" }}>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <ListItemText primary="My Purchase" sx={{ color: "white" }} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon sx={{ color: "white" }}>
+              <DesignServicesIcon />
+            </ListItemIcon>
+            <ListItemText primary="Designer" sx={{ color: "white" }} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon sx={{ color: "white" }}>
+              <PrintIcon />
+            </ListItemIcon>
+            <ListItemText primary="Printing Shops" sx={{ color: "white" }} />
+          </ListItem>
+        </List>
+      </Drawer>
+
+      <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: "white" }}>
+        <Toolbar />
+
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+
+            <Paper sx={{ p: 2, mb: 4, boxShadow: 3 }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Avatar alt="Profile" src="/assets/image/artcat.jpg" />
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  placeholder="Unsay idea nimo chuy?"
+                  size="small"
+                />
+              </Box>
+              <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+                <Button variant="contained" color="primary">
+                  Post
+                </Button>
+              </Box>
+            </Paper>
+
+            <Box sx={{ marginLeft: 1, marginRight: 2, padding: 1 }}>
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                gutterBottom
+                sx={{ color: "black", textAlign: "left" }}
+              >
+                Top Artists
+              </Typography>
+              <SelectionCarousel
+                items={items}
+                handleNext={handleArtistNext}
+                handlePrevious={handleArtistPrevious}
+                currentIndex={artistIndex}
               />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 21h-2a2 2 0 01-2-2h6a2 2 0 01-2 2z"
+            </Box>
+            <Box sx={{ marginLeft: 1, marginRight: 2, padding: 1 }}>
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                gutterBottom
+                sx={{ color: "black", textAlign: "left" }}
+              >
+                Top Printing Shops
+              </Typography>
+              <SelectionCarousel
+                items={printingShops}
+                handleNext={handleShopNext}
+                handlePrevious={handleShopPrevious}
+                currentIndex={shopIndex}
               />
-            </svg>
-          </button>
+            </Box>
+          </Grid>
 
-          <img
-            src="/assets/image/artcat.jpg"
-            alt="Profile"
-            className="w-10 h-10 rounded-full object-cover"
-          />
-        </div>
-      </div>
-
-      <div className="bg-blue-500 w-64 min-h-screen p-6 text-white mt-16 fixed top-0 left-0 z-40">
-        <div className="space-y-6 mt-16">
-
-          <a href="#" className="flex items-center space-x-4 hover:bg-blue-600 p-2 rounded-lg">
-            <img
-              src="/assets/image/dashboardlogo.png"
-              alt="Dashboard Logo"
-              className="h-8 w-8"
-            />
-            <span className="text-lg font-medium">Dashboard</span>
-          </a>
-
-          <a href="#" className="flex items-center space-x-4 hover:bg-blue-600 p-2 rounded-lg">
-            <img
-              src="/assets/image/chatlogo.png"
-              alt="Chat Logo"
-              className="h-8 w-8"
-            />
-            <span className="text-lg font-medium">Chat</span>
-          </a>
-
-          <a href="#" className="flex items-center space-x-4 hover:bg-blue-600 p-2 rounded-lg">
-            <img
-              src="/assets/image/mypurchaselogo.png"
-              alt="Purchase Logo"
-              className="h-8 w-8"
-            />
-            <span className="text-lg font-medium">My Purchase</span>
-          </a>
-
-          <a href="#" className="flex items-center space-x-4 hover:bg-blue-600 p-2 rounded-lg">
-            <img
-              src="/assets/image/designerlogo.png"
-              alt="Designer Logo"
-              className="h-8 w-8"
-            />
-            <span className="text-lg font-medium">Designer</span>
-          </a>
-
-          <a href="#" className="flex items-center space-x-4 hover:bg-blue-600 p-2 rounded-lg">
-            <img
-              src="/assets/image/printshopslogo.png"
-              alt="Print Shop Logo"
-              className="h-8 w-8"
-            />
-            <span className="text-lg font-medium">Printing Shops</span>
-          </a>
-
-        </div>
-      </div>
-
-      <div className="flex-1 flex flex-col ml-64 pt-20">
-        <div className="flex flex-col items-start flex-1 mt-4 p-4">
-          
-          <div className="bg-white w-full max-w-2xl p-4 rounded-lg shadow-md">
-            <div className="flex items-center space-x-4">
-              <img
-                src="/assets/image/artcat.jpg"
-                alt="Profile"
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <input
-                type="text"
-                placeholder="Unsay idea nimo chuy?"
-                className="w-full p-2 border border-gray-300 text-gray-950 rounded-lg focus:outline-none"
-              />
-            </div>
-            <div className="flex justify-end mt-3">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold">
-                Post
-              </button>
-            </div>
-          </div>
-
-          <div className="max-w-2xl mt-8">
-            <h3 className="text-xl font-bold mb-4 text-black">Top Artists</h3>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src="/assets/image/artist1.jpg"
-                  alt="Artist 1"
-                  className="w-full h-32 object-cover rounded-lg"
-                />
-                <h4 className="text-lg font-semibold mt-2">Item 1</h4>
-                <p className="text-gray-600 mt-1">Zelma Diana</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src="/assets/image/artist2.jpg"
-                  alt="Artist 2"
-                  className="w-full h-32 object-cover rounded-lg"
-                />
-                <h4 className="text-lg font-semibold mt-2">Item 2</h4>
-                <p className="text-gray-600 mt-1">Perrine Gerda</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src="/assets/image/artist3.jpg"
-                  alt="Artist 3"
-                  className="w-full h-32 object-cover rounded-lg"
-                />
-                <h4 className="text-lg font-semibold mt-2">Item 3</h4>
-                <p className="text-gray-600 mt-1">Perrine Gerda</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-2xl mt-12">
-            <h3 className="text-xl font-bold mb-4 text-black">Printing Shops</h3>
-            <div className="grid grid-cols-3 gap-7">
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src="/assets/image/artist1.jpg"
-                  alt="Print Shop 1"
-                  className="w-full h-24 object-cover rounded-lg"
-                />
-                <h4 className="text-lg font-semibold mt-2">Print Shop 1</h4>
-                <p className="text-gray-600 mt-1">Best in town</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src="/assets/image/artist2.jpg"
-                  alt="Print Shop 2"
-                  className="w-full h-24 object-cover rounded-lg"
-                />
-                <h4 className="text-lg font-semibold mt-2">Print Shop 2</h4>
-                <p className="text-gray-600 mt-1">Quality prints</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src="/assets/image/artist3.jpg"
-                  alt="Print Shop 3"
-                  className="w-full h-24 object-cover rounded-lg"
-                />
-                <h4 className="text-lg font-semibold mt-2">Print Shop 3</h4>
-                <p className="text-gray-600 mt-1">Affordable prices</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
+              <Timeline />
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
   );
 }
 
