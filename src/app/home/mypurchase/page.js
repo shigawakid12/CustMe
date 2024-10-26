@@ -61,7 +61,7 @@ function MainContent() {
         padding: 2,
         minHeight: "100vh",
         backgroundColor: "white",
-        width: "calc(100% - 240px)", // Adjust width to cover remaining space
+        width: "calc(100% - 240px)",
       }}
     >
       <Typography variant="h5" gutterBottom color="black">

@@ -21,7 +21,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ChatIcon from '@mui/icons-material/Chat';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
-import DashboardIcon from '@mui/icons-material/Dashboard'; // Import Dashboard Icon
+import DashboardIcon from '@mui/icons-material/Dashboard'; 
 
 const initialPosts = [
   {
@@ -125,7 +125,7 @@ function Home() {
         <List>
           <ListItem button>
             <ListItemIcon>
-              <DashboardIcon sx={{ color: 'white' }} /> {/* Dashboard Icon */}
+              <DashboardIcon sx={{ color: 'white' }} /> 
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItem>
@@ -147,11 +147,10 @@ function Home() {
       <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: 'white' }}>
         <Toolbar />
 
-        {/* Smaller Search Bar with Icon */}
         <TextField
           variant="outlined"
           placeholder="Search..."
-          size="small" // Make the size small
+          size="small" 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           InputProps={{
@@ -161,7 +160,7 @@ function Home() {
               </InputAdornment>
             ),
           }}
-          sx={{ mb: 2, width: '300px' }} // Set a specific width
+          sx={{ mb: 2, width: '300px' }} 
         />
 
         <Box>
@@ -185,7 +184,7 @@ function Home() {
                     color: 'white',
                     mr: 1,
                     '&:hover': {
-                      backgroundColor: 'blue', // Change to blue on hover
+                      backgroundColor: 'blue', 
                     },
                   }}
                   onClick={() => handleApply(post.id)}
@@ -198,8 +197,8 @@ function Home() {
                     background: 'red',
                     color: 'white',
                     '&:hover': {
-                      backgroundColor: 'blue', // Change to blue on hover
-                      color: 'white', // Change text color to white on hover
+                      backgroundColor: 'blue', 
+                      color: 'white', 
                     },
                   }}
                   onClick={() => handleIgnore(post.id)}

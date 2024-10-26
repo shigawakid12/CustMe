@@ -1,6 +1,6 @@
-"use client"; // Mark this file as a client component
+"use client"; 
 
-import React, { useState } from 'react'; // Make sure useState is imported
+import React, { useState } from 'react'; 
 import {
   AppBar,
   Toolbar,
@@ -24,7 +24,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MessageIcon from '@mui/icons-material/Message';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-// Sample profile data
 const profileData = {
   name: 'Charles Shop',
   location: 'Lapu-Lapu City',
@@ -35,7 +34,6 @@ const profileData = {
   coverPhoto: '/assets/image/printcover.jpg',
 };
 
-// Sample collage images and their respective messages
 const collageData = [
   { image: '/assets/image/tshirt1.jpg', message: 'Customized T-shirt for a local brand.' },
   { image: '/assets/image/tshirt2.jpg', message: 'Minimalist design with eco-friendly fabric.' },
@@ -46,7 +44,7 @@ const collageData = [
 
 function Home() {
   const [uploadedImage, setUploadedImage] = useState(null);
-  const [imageMessage, setImageMessage] = useState(''); // State to hold image message
+  const [imageMessage, setImageMessage] = useState(''); 
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -57,7 +55,7 @@ function Home() {
   };
 
   const handleMessageChange = (event) => {
-    setImageMessage(event.target.value); // Update image message on input change
+    setImageMessage(event.target.value); 
   };
 
   return (
@@ -119,16 +117,13 @@ function Home() {
         <Toolbar />
 
         <Grid container spacing={3}>
-          {/* Top Section: Cover Photo and Profile Picture */}
           <Grid item xs={12}>
             <Box sx={{ position: 'relative', mb: 6 }}>
-              {/* Cover Photo */}
               <img
                 src={profileData.coverPhoto}
                 alt="Cover"
                 style={{ width: '100%', height: '300px', objectFit: 'cover' }}
               />
-              {/* Profile Picture - Overlapping on Cover Photo */}
               <Avatar
                 alt="Profile Picture"
                 src={profileData.profilePicture}
@@ -137,18 +132,16 @@ function Home() {
                   height: 150,
                   position: 'absolute',
                   bottom: -75,
-                  left: '2%', // Positioned for overlap
+                  left: '2%', 
                   border: '5px solid white',
                 }}
               />
             </Box>
           </Grid>
 
-          {/* Profile Details - Separate from Profile Picture */}
           <Grid item xs={12}>
             <Paper elevation={3} sx={{ padding: 2 }}>
               <Grid container spacing={2} alignItems="center">
-                {/* Profile Information on the Left */}
                 <Grid item xs={8}>
                   <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 1 }}>
                     {profileData.name}
@@ -159,7 +152,6 @@ function Home() {
                   <Typography variant="body2" color="textSecondary">Email: {profileData.email}</Typography>
                 </Grid>
 
-                {/* Buttons for Message and Location aligned to the right side */}
                 <Grid item xs={4} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                   <Button
                     variant="contained"
@@ -181,7 +173,6 @@ function Home() {
             </Paper>
           </Grid>
 
-{/* Image Upload Section */}
 <Grid item xs={12}>
   <input
     accept="image/*"
@@ -197,8 +188,6 @@ function Home() {
   </label>
 </Grid>
 
-
-          {/* Timeline Feed */}
           <Grid item xs={12}>
             <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, color: 'black' }}>Portfolio</Typography>
             <Grid container spacing={2}>
@@ -223,7 +212,6 @@ function Home() {
                 </Grid>
               ))}
 
-              {/* Display Uploaded Image in the Timeline */}
               {uploadedImage && (
                 <Grid item xs={12} sm={6} md={4}>
                   <Paper sx={{ padding: 2 }}>
